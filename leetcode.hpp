@@ -18,5 +18,7 @@
 #include <functional>
 #include <string>
 #include <cctype>
+#include <sstream>
+#include <iomanip>
 
 using namespace std;
