@@ -4,22 +4,11 @@
 class Solution {
 public:
     int maximumSum(vector<int>& arr) {
-        int ans = 0, sum = 0, flag = 0;
-        for(int i = 0; i < arr.size(); ++i){
-            if(arr[i] < 0){
-                flag++;
-                if(flag % 2 == 0){
-                ans = max(ans, sum);
-                sum = 0;
-                }
-                continue;
-            }
-            sum = max(ans, sum + arr[i]);
-        }
-        ans = max(sum, ans);
-        if(ans == 0) {
-            std::sort(arr.begin(), arr.end());
-            ans = arr[arr.size() - 1];
+        int sum1 = arr[0], sum2 = 0, ans = arr[0];
+        for(int i = 1; i < arr.size();i++){
+            sum2 = max(sum1,sum2+arr[i]);
+            sum1 = max(sum1,0) +arr[i];
+            ans = max(ans,max(sum1,sum2));
         }
         return ans;
     }
